@@ -1,0 +1,31 @@
+#include "TareaAcademica.h"
+#include <iostream>
+using namespace std;
+
+TareaAcademica::TareaAcademica(string _titulo ,int _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _materia, string _tipo)
+               :Tarea(_titulo, _descripcion, _fechaLimite, _completada, _prioridad), materia(_materia),tipo(_tipo){}
+
+    
+    //setters
+    void TareaAcademica::setCompletada(){ this->completada;}
+
+
+    string TareaAcademica::getMateria()const{return materia;}
+    string TareaAcademica::getTipo()const{return tipo;}  
+
+    
+    //metodos dinamicos
+    void TareaAcademica::mostrarTarea()const{
+        cout<<"<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+        cout<<"Descripcion: tarea Academica " <<endl;
+        cout<<"Titulo: "<<getTitulo()<<endl;
+        cout<<"Fecha limite: "<<getFechaLimite()<<endl;
+        cout<<"Estado: "<<(getCompletada()?"Completada":"Pendiente")<<endl;
+        cout<<"Prioridad: "<<getPrioridad()<<endl;
+        cout<<"Materia: "<<getMateria()<<endl;
+        cout<<"tipo: "<<getTipo()<<endl;
+        
+
+
+    }
+    string TareaAcademica::serializar()const{return "";}
