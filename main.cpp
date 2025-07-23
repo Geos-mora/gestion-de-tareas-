@@ -5,6 +5,8 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -31,7 +33,7 @@ int main()
                 string titulo;
                 int descripcion;
                 string fechaLimite; 
-                bool completada=false;
+                bool Status=false;
                 int prioridad;
                 string categoria;
                 string materia;
@@ -65,19 +67,19 @@ int main()
                 {
                     cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";cin>>categoria;
 
-                    listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, completada, prioridad, categoria));
+                    listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, Status, prioridad, categoria));
                     
                 }else if (descripcion==2)
                 {
                     cout<<"digite asignatura: ";cin>>materia;
                     cout<<"digite tipo [ examen,  taller, exposición ]: ";cin>>tipo;
                     
-                    listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, completada, prioridad, materia,tipo));
+                    listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, Status, prioridad, materia,tipo));
                 }else if(descripcion==3){
                     cout<<"proyecto a realizar: ";cin>>proyecto;
                     cout<<"digite responsable del proyecto: ";cin>>responsable;
                     
-                    listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, completada, prioridad, proyecto, responsable));
+                    listaTareas.push_back(new TareaLaboral(titulo, descripcion, fechaLimite, Status, prioridad, proyecto, responsable));
                     
                 }
                 
@@ -97,20 +99,38 @@ int main()
         }
         case 3:{
             string buscarTitulo;
-            cout<<"digite titulo de la tarea";cin>>buscarTitulo;
+            cout<<"digite titulo de la tarea: ";cin>>buscarTitulo;
             for (int i = 0; i < listaTareas.size(); i++){
             
                 if (buscarTitulo==listaTareas[i]->getTitulo())
                 {
+                    listaTareas[i]->setStatus();
                     listaTareas[i]->mostrarTarea();
-                    //listaTareas[i]->getCompletada()=true;
-                }
-                
-
+                }  
             }
             
             break;
         }
+            case 4: {
+    cout << "Cargando tareas desde archivo...\n";
+
+    ifstream archivo("tareas.txt");
+
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo 'tareas.txt'. Verifica que exista.\n";
+        break;
+    }
+    string line;
+
+    while (getline(archivo,line))
+    {
+        /* code */
+    }
+    
+    break;
+}
+
+
             cout <<"ingresa una opcion validad \n";        
         default:
             break;
