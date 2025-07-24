@@ -1,0 +1,3 @@
+Personal,asd,14,0,45,ghh
+Personal,aseo,12/12/25,0,5,hogar
+Academica,tarea,12/12/26,0,1,calculclo,examen

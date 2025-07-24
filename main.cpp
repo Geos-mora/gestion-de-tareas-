@@ -119,7 +119,7 @@ int main()
         case 4:{
 
             cout<<"abriendo archivo...\n";
-            ofstream archivo("tareas.txt"); //abre el archivo
+            ofstream archivo("tareas.txt",ios::app); //abre el archivo
 
             if (!archivo.is_open())
             {
@@ -133,6 +133,13 @@ int main()
 
             archivo.close();
             cout<<"archivo guardado correctamente\n";
+
+            break;
+        }
+
+        case 5:{
+
+            
 
             break;
         }
