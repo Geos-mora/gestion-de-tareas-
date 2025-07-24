@@ -9,7 +9,7 @@ private:
     string materia;
     string tipo; 
 public:
-    TareaAcademica(string _titulo ,int _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _materia, string _tipo);
+    TareaAcademica(string _titulo ,string _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _materia, string _tipo);
     void setCompletada();
     string  getMateria()const;
     string  getTipo()const;

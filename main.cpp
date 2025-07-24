@@ -31,7 +31,7 @@ int main()
         case 1:{
 
                 string titulo;
-                int descripcion;
+                string descripcion;
                 string fechaLimite; 
                 bool Status=false;
                 int prioridad;
@@ -41,6 +41,8 @@ int main()
                 string proyecto;
                 string responsable;
 
+                
+
            while (true){     
              cout <<"############ ELECCIONE TIPO DE TAREA#########\n";
                 cout<<"1. Tarea personal\n";
@@ -48,7 +50,7 @@ int main()
                 cout<<"3. Tarea laboral\n";
                 cout<<"elija una opccion;  ";cin>>descripcion;
                 
-            if (descripcion>=1&&descripcion<=3)
+            if (descripcion>="1"&&descripcion<="3")
             {
                 break;
             }else{
@@ -63,19 +65,21 @@ int main()
                 cout<<"prioridad [1 a 5]: ";cin >>prioridad;
 
 
-                if (descripcion==1)
-                {
+                if (descripcion=="1"){
+                    
+                    descripcion="Personal";
                     cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";cin>>categoria;
 
                     listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, Status, prioridad, categoria));
                     
-                }else if (descripcion==2)
-                {
+                }else if (descripcion=="2"){
+                    descripcion="Academica";
                     cout<<"digite asignatura: ";cin>>materia;
                     cout<<"digite tipo [ examen,  taller, exposición ]: ";cin>>tipo;
                     
                     listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, Status, prioridad, materia,tipo));
-                }else if(descripcion==3){
+                }else if(descripcion=="3"){
+                    descripcion="Laboral";
                     cout<<"proyecto a realizar: ";cin>>proyecto;
                     cout<<"digite responsable del proyecto: ";cin>>responsable;
                     
@@ -111,24 +115,27 @@ int main()
             
             break;
         }
-            case 4: {
-    cout << "Cargando tareas desde archivo...\n";
 
-    ifstream archivo("tareas.txt");
+        case 4:{
 
-    if (!archivo.is_open()) {
-        cout << "No se pudo abrir el archivo 'tareas.txt'. Verifica que exista.\n";
-        break;
-    }
-    string line;
+            cout<<"abriendo archivo...\n";
+            ofstream archivo("tareas.txt"); //abre el archivo
 
-    while (getline(archivo,line))
-    {
-        /* code */
-    }
-    
-    break;
-}
+            if (!archivo.is_open())
+            {
+                cout<<"no se pudo abrir el archivo\n";
+                break;
+            }
+
+            for (Tarea* tarea :listaTareas){
+                archivo<<tarea->serializar()<<endl;
+            }
+
+            archivo.close();
+            cout<<"archivo guardado correctamente\n";
+
+            break;
+        }
 
 
             cout <<"ingresa una opcion validad \n";        

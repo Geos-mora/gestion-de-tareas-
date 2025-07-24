@@ -10,7 +10,7 @@ private:
     string categoria;
 
 public:
-    TareaPersonal(string _titulo ,int _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _categoria);
+    TareaPersonal(string _titulo ,string _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _categoria);
 
     string getCategoria()const;
     

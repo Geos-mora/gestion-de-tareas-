@@ -10,16 +10,17 @@ using namespace std;
     
  string titulo , fechaLimite;
  bool Status;
- int prioridad, descripcion;
+ int prioridad;
+string descripcion;
 
  public:
-    Tarea(string _titulo ,int _descripcion, string _fechaLimite, bool _Status,int _prioridad);
+    Tarea(string _titulo ,string _descripcion, string _fechaLimite, bool _Status,int _prioridad);
 
     
     void setStatus();
     //GETTERS
       string getTitulo()const;
-      int getDescripcion()const;
+      string getDescripcion()const;
       string getFechaLimite()const;
       bool getStatus()const;
       int getPrioridad()const;

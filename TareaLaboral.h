@@ -9,7 +9,7 @@ private:
     string proyecto;
     string responsable;
 public:
-    TareaLaboral(string _titulo ,int _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _proyecto, string _responsable);
+    TareaLaboral(string _titulo ,string _descripcion, string _fechaLimite, bool _completada,int _prioridad, string _proyecto, string _responsable);
 
     string getProyecto()const;
     string getResponsable()const;
