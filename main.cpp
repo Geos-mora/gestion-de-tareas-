@@ -117,9 +117,9 @@ int main()
         }
 
         case 4:{
-
+            
             cout<<"abriendo archivo...\n";
-            ofstream archivo("tareas.txt",ios::app); //abre el archivo
+            ofstream archivo("tareas.txt"); //abre el archivo
 
             if (!archivo.is_open())
             {
@@ -139,11 +139,54 @@ int main()
 
         case 5:{
 
+
+            cout<<"cargar archivos\n";
+            ifstream archivo("tareas.txt");
+
+            if (!archivo.is_open()){
+                cout<<"el archivo no se abrio correctamente \n";
+                break;
+            }
+
+            string line;
+           while (getline(archivo, line)) {
+            stringstream  ss(line);
+             
+            string titulo,descripcion,fechaLimite, StatusStr,prioridadStr,categoria,materia,tipo, proyecto,responsable;
+            getline(ss, descripcion, ',');
+            getline(ss, titulo, ',');
+            getline(ss, fechaLimite, ',');
+            getline(ss, StatusStr, ',');
+            getline(ss, prioridadStr, ',');
+            getline(ss, categoria, ',');
+            getline(ss, materia, ',');
+            getline(ss, tipo, ',');
+            getline(ss, proyecto, ',');
+            getline(ss, responsable, ',');
+      
+            bool Status=(StatusStr=="1");
+            int prioridad=stoi(prioridadStr);
+
+            if (descripcion=="Personal")
+            {
+                listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, Status, prioridad, categoria));
             
+            }else if (descripcion=="Academica"){
 
-            break;
+                listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, Status, prioridad, materia,tipo));    
+            }else if (descripcion=="Laboral"){
+
+                   listaTareas.push_back(new TareaLaboral(titulo, descripcion, fechaLimite, Status, prioridad, proyecto, responsable));
+                
+            }
+            
+            
         }
-
+        archivo.close();
+        cout << "Tareas cargadas exitosamente desde 'tareas.txt'.\n";
+        break;  
+    }
+        
 
             cout <<"ingresa una opcion validad \n";        
         default:
@@ -158,7 +201,6 @@ int main()
         delete listaTareas[i];
     }
     
-
 
     return 0;
 }
