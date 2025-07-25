@@ -59,29 +59,28 @@ int main()
             }
            }
            
-            
-                cout<<"Nombre de la tarea: ";cin >>titulo;
-                cout<<"digite fecha limite: ";cin >>fechaLimite;
-                cout<<"prioridad [1 a 5]: ";cin >>prioridad;
-
-
+            cin.ignore();
+                cout<<"Nombre de la tarea: ";getline(cin, titulo) ;
+                cout<<"digite fecha limite: ";getline(cin, fechaLimite) ;
+                cout<<"prioridad [1 a 5]: ";cin >>prioridad; cin.ignore();
                 if (descripcion=="1"){
                     
                     descripcion="Personal";
-                    cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";cin>>categoria;
+                    cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";cin>>categoria; cin.ignore();
 
                     listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, Status, prioridad, categoria));
                     
                 }else if (descripcion=="2"){
                     descripcion="Academica";
-                    cout<<"digite asignatura: ";cin>>materia;
-                    cout<<"digite tipo [ examen,  taller, exposición ]: ";cin>>tipo;
+                    cout<<"digite asignatura: ";getline(cin, materia);
+                    cout<<"digite tipo [ examen,  taller, exposición ]: ";getline(cin, tipo); 
+
                     
                     listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, Status, prioridad, materia,tipo));
                 }else if(descripcion=="3"){
                     descripcion="Laboral";
-                    cout<<"proyecto a realizar: ";cin>>proyecto;
-                    cout<<"digite responsable del proyecto: ";cin>>responsable;
+                    cout<<"proyecto a realizar: ";getline(cin, proyecto);
+                    cout<<"digite responsable del proyecto: ";getline(cin, responsable); cin.ignore();
                     
                     listaTareas.push_back(new TareaLaboral(titulo, descripcion, fechaLimite, Status, prioridad, proyecto, responsable));
                     
@@ -103,7 +102,7 @@ int main()
         }
         case 3:{
             string buscarTitulo;
-            cout<<"digite titulo de la tarea: ";cin>>buscarTitulo;
+            cout<<"digite titulo de la tarea: ";getline(cin, buscarTitulo); cin.ignore();
             for (int i = 0; i < listaTareas.size(); i++){
             
                 if (buscarTitulo==listaTareas[i]->getTitulo())
