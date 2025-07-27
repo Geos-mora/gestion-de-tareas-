@@ -66,7 +66,7 @@ int main()
                 if (descripcion=="1"){
                     
                     descripcion="Personal";
-                    cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";cin>>categoria; cin.ignore();
+                    cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";getline(cin, categoria); 
 
                     listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, Status, prioridad, categoria));
                     
@@ -102,17 +102,26 @@ int main()
         }
         case 3:{
             string buscarTitulo;
-            cout<<"digite titulo de la tarea: ";getline(cin, buscarTitulo); cin.ignore();
+            bool encontardo=false;
+            cin.ignore();
+            cout<<"digite titulo de la tarea: ";getline(cin, buscarTitulo); 
             for (int i = 0; i < listaTareas.size(); i++){
             
                 if (buscarTitulo==listaTareas[i]->getTitulo())
                 {
                     listaTareas[i]->setStatus();
+                    cout<<"-----------registro encontrado----------\n";
                     listaTareas[i]->mostrarTarea();
-                }  
+                }
+            }
+            if (!encontardo){
+                cout<<"registro no encontrado en la lista \n";
             }
             
+            cout<<"presiona ENTER ";
+            cin.get();
             break;
+
         }
 
         case 4:{
