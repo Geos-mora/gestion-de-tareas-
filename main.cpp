@@ -31,6 +31,7 @@ int main()
         case 1:{
 
                 string titulo;
+                string tipoTarea;
                 string descripcion;
                 string fechaLimite; 
                 bool Status=false;
@@ -48,9 +49,9 @@ int main()
                 cout<<"1. Tarea personal\n";
                 cout<<"2. Tarea academica\n";
                 cout<<"3. Tarea laboral\n";
-                cout<<"elija una opccion;  ";cin>>descripcion;
+                cout<<"elija una opccion;  ";cin>>tipoTarea;
                 
-            if (descripcion>="1"&&descripcion<="3")
+            if (tipoTarea>="1"&&tipoTarea<="3")
             {
                 break;
             }else{
@@ -63,21 +64,21 @@ int main()
                 cout<<"Nombre de la tarea: ";getline(cin, titulo) ;
                 cout<<"digite fecha limite: ";getline(cin, fechaLimite) ;
                 cout<<"prioridad [1 a 5]: ";cin >>prioridad; cin.ignore();
-                if (descripcion=="1"){
+                if (tipoTarea=="1"){
                     
                     descripcion="Personal";
                     cout<<"digite categoria  [hogar, salud, finanzas ,ocio etc.]: ";getline(cin, categoria); 
 
                     listaTareas.push_back(new TareaPersonal(titulo, descripcion, fechaLimite, Status, prioridad, categoria));
                     
-                }else if (descripcion=="2"){
+                }else if (tipoTarea=="2"){
                     descripcion="Academica";
                     cout<<"digite asignatura: ";getline(cin, materia);
                     cout<<"digite tipo [ examen,  taller, exposición ]: ";getline(cin, tipo); 
 
                     
                     listaTareas.push_back(new TareaAcademica(titulo, descripcion, fechaLimite, Status, prioridad, materia,tipo));
-                }else if(descripcion=="3"){
+                }else if(tipoTarea=="3"){
                     descripcion="Laboral";
                     cout<<"proyecto a realizar: ";getline(cin, proyecto);
                     cout<<"digite responsable del proyecto: ";getline(cin, responsable); cin.ignore();
@@ -102,7 +103,7 @@ int main()
         }
         case 3:{
             string buscarTitulo;
-            bool encontardo=false;
+            bool encontrado=false;
             cin.ignore();
             cout<<"digite titulo de la tarea: ";getline(cin, buscarTitulo); 
             for (int i = 0; i < listaTareas.size(); i++){
@@ -114,7 +115,7 @@ int main()
                     listaTareas[i]->mostrarTarea();
                 }
             }
-            if (!encontardo){
+            if (!encontrado){
                 cout<<"registro no encontrado en la lista \n";
             }
             

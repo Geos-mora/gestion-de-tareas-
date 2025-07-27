@@ -4,3 +4,4 @@ Academica,taller,12/15/25,0,5,,
 Personal,aseo,12/12/12,0,1,hogar
 Personal,lipiar,128,1,5,hogar
 Personal,ir a la universidad,12/25/52,0,1,hogar
+Personal,pasear al perro,12/12/50,0,3,ocio
